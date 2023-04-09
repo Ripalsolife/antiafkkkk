@@ -1,0 +1,36 @@
+getgenv().AntiAfk = flase;
+_G.MainColor
+_G.SecondaryColor
+_G.TertiaryColor
+_G.ArrowColor
+_G.MainTextColor
+_G.PointerColor
+_G.ButtonTextColor
+_G.SliderColor
+_G.ButtonColor
+_G.ToggleColor
+_G.DraggerCircleColor
+_G.BindColor
+local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
+
+local w = library:CreateWindow("Antiafkk") -- Creates the window
+
+local b = w:CreateFolder("anti afk") -- Creates the folder(U will put here your buttons,etc)
+b:Toggle("Anti a ép ka",function(bool)
+    getgenv().AntiAfk = bool
+    if bool then
+        AnTiAFFK();
+    end
+end)
+b:ColorPicker("ColorPicker",Color3.fromRGB(255,0,0),function(color) --Default color
+    print(color)
+end)
+function AnTiAFFK()
+    if AntiAfk == true then
+        repeat wait() until game:IsLoaded() 
+    game:GetService("Players").LocalPlayer.Idled:connect(function()
+    game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+end)
+    end
+end
+b:DestroyGui()
